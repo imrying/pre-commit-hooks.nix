@@ -1557,7 +1557,7 @@ in
                   [ (settings.dlangfmt.write) "-i" ]
                 ];
             in
-            "${tools.dlangfmt}/bin/dfmt ${cmdArgs}";
+            "${tools.dlang-dfmt}/bin/dfmt ${cmdArgs}";
         };
       dhall-format = {
         name = "dhall-format";
