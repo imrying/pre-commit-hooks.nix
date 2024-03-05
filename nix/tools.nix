@@ -19,6 +19,7 @@
 , crystal
 , deadnix
 , deno
+, dlang-dfmt
 , dhall
 , dune_3
 , eclint

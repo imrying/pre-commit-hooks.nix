@@ -216,6 +216,21 @@ in
               default = "";
             };
         };
+      dlangfmt =
+        {
+          write =
+            mkOption {
+              type = types.bool;
+              description = lib.mdDoc "Wheter to edit files inplace.";
+              default = true;
+            };
+          # configPath = 
+          #   mkOption {
+          #     type = types.str;
+          #     description = lib.mdDoc "Path to the configuration .editorconfig file";
+          #     default = ".";
+          #   };
+        };
       dune-fmt =
         {
           auto-promote =
@@ -1529,6 +1544,20 @@ in
                 ];
             in
             "${tools.deno}/bin/deno lint ${cmdArgs}";
+        };
+      dlangfmt =
+        {
+          name = "dlangfmt";
+          description = "Auto format dlang files";
+          types_or = [ "d" "dlang" ];
+          entry =
+            let
+              cmdArgs =
+                mkCmdArgs [
+                  [ (settings.dlangfmt.write) "-i" ]
+                ];
+            in
+            "${tools.dlangfmt}/bin/dfmt ${cmdArgs}";
         };
       dhall-format = {
         name = "dhall-format";
